@@ -12,3 +12,6 @@ Traballo RIWS
 6. Idioma
 7. Precio
 8. Formato (Tapa dura/tapa blanda)
+
+## Postman
+https://earlyrisk.postman.co/workspace/New-Team-Workspace~899a528d-733b-406e-a679-577f7f9cabc3/collection/1262116-52dcf7a2-4f26-43ea-b4ea-a11cce96ca60?action=share&creator=29656879
