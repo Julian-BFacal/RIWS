@@ -9,19 +9,25 @@ class ExampleSpider(CrawlSpider):
     start_urls = ['https://www.casadellibro.com/']
 
     custom_settings = {
-                'CLOSESPIDER_ITEMCOUNT' : 10,
-                'DOWNLOAD_DELAY' : 0.5}
+                'CLOSESPIDER_ITEMCOUNT' : 5,
+                'CLOSESPIDER_PAGECOUNT' : 100,
+                'DOWNLOAD_DELAY' : 0}
 
     rules = (
+    	Rule(
+            LinkExtractor(
+                allow="casadellibro.com/libro-"),
+                callback='parse_item',
+                follow=False
+            ),
         Rule(
             LinkExtractor(
                 allow=""),
-                callback='parse_item',
+                callback='',
                 follow=True
             ),
         )
 
-
     def parse_item(self, response):
         page = response.url
-        print(page)
+        print(page+"......................................................... ")
