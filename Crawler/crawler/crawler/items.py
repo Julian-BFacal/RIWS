@@ -5,10 +5,10 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy.item import Item, Field
 
 
-class CrawlerItem(scrapy.Item):
+class Book(Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
+    name = Field()
     pass
