@@ -1,5 +1,10 @@
 # RIWS
 Traballo RIWS
+Instalar dependencias con 
+
+```
+ pip install -r requirements.txt
+```
 
 # Libros
 
