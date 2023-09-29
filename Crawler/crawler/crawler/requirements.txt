@@ -1,0 +1,4 @@
+beautifulsoup4==4.12.2
+crawler==0.0.2
+elasticsearch==8.10.0
+Scrapy==2.6.3
