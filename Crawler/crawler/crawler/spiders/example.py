@@ -5,8 +5,8 @@ from scrapy.linkextractors import LinkExtractor
 
 class ExampleSpider(CrawlSpider):
     name = 'example'
-    allowed_domains = ['example.com']
-    start_urls = ['http://example.com/']
+    allowed_domains = ['casadellibro.com']
+    start_urls = ['https://www.casadellibro.com/']
 
     custom_settings = {
                 'CLOSESPIDER_ITEMCOUNT' : 10,
