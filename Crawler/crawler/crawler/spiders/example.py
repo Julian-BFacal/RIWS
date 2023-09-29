@@ -11,18 +11,24 @@ class ExampleSpider(CrawlSpider):
     start_urls = ['https://www.casadellibro.com/libro-la-chica-del-verano-novela/9788448038977/14166923/']
 
     custom_settings = {
-                'CLOSESPIDER_ITEMCOUNT' : 10,
-                'DOWNLOAD_DELAY' : 0.5}
+                'CLOSESPIDER_ITEMCOUNT' : 5,
+                'CLOSESPIDER_PAGECOUNT' : 100,
+                'DOWNLOAD_DELAY' : 0}
 
     rules = (
-        Rule(
+    	Rule(
             LinkExtractor(
-                allow="www.casadellibro.com/libro-"),
+                allow="casadellibro.com/libro-"),
                 callback='parse_item',
                 follow=False
             ),
+        Rule(
+            LinkExtractor(
+                allow=""),
+                callback='',
+                follow=True
+            ),
         )
-
 
     def parse_item(self, response):
         book = Book()
