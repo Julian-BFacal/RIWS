@@ -11,25 +11,31 @@ from scrapy.http.response.html import HtmlResponse
 class ExampleSpider(CrawlSpider):
     name = 'example'
     allowed_domains = ['casadellibro.com']
-    start_urls = ['https://www.casadellibro.com/libro-la-chica-del-verano-novela/9788448038977/14166923/']
+    start_urls = ['https://www.casadellibro.com/']
 
     custom_settings = {
-                'CLOSESPIDER_ITEMCOUNT' : 5,
-                'CLOSESPIDER_PAGECOUNT' : 100,
+                'CLOSESPIDER_ITEMCOUNT' : 100,
+                'CLOSESPIDER_PAGECOUNT' : 1000,
                 'DOWNLOAD_DELAY' : 0}
 
     rules = (
     	Rule(
             LinkExtractor(
-                allow="www.casadellibro.com/libro-la-chica-del-verano-novela/9788448038977/14166923"),
+                allow="www.casadellibro.com/libro-"),
                 callback='parse_item',
                 follow=False
+            ),
+        Rule(
+            LinkExtractor(
+                allow="www.casadellibro.com/"),
+                callback='',
+                follow=True
             ),
         )
 
     def start_requests(self):
         for url in self.start_urls:
-            yield SplashRequest(url, self.parse_item, args={'wait': 0.5})
+            yield SplashRequest(url, args={'wait': 0.5})
 
     """
     def parse(self,response):
@@ -38,7 +44,7 @@ class ExampleSpider(CrawlSpider):
 
     def _requests_to_follow(self,response):
         if not isinstance(response, HtmlResponse):
-            response = HtmlResponse(url=response.url, status=response.status, header = response.headers,
+            response = HtmlResponse(url=response.url, status=response.status, headers = response.headers,
                 body = response.body, flags = response.flags, encoding = "utf-8", request = response.request,
                 certificate = response.certificate, ip_address= response.ip_address)
         return super()._requests_to_follow(response)
@@ -47,10 +53,13 @@ class ExampleSpider(CrawlSpider):
     def parse_item(self, response):
         book = Book()
         soup = BeautifulSoup(response.body, 'lxml')
-        
-        print(soup.find_all('div', attrs={'class': 'text-h4 font-weight-bold'}))
-        """
-        book['name'] = soup.select('h1', class_='text-h4 mb-2')[0].text.strip()
+
+        aux = []
+        for element in soup.find_all("span",attrs={"class":"v-chip__content"}):
+            aux.append(element.get_text().replace("\n","").replace("\t",""))
+        book['tags']=aux
+
+        book['name'] = soup.select('h1', class_='text-h4 mb-2')[0].text.strip().replace("\n","").replace("\t","")
         book["author"] = soup.find('a', attrs={'class': 'text--darken-1 d-flex grey--text'})["data-autor-link"]
         for element in soup.find_all('div', attrs={'class': 'row text-body-2 py-1 no-gutters'}):
             value = element.get_text().split(":")
@@ -62,6 +71,6 @@ class ExampleSpider(CrawlSpider):
                  book["year"] = value[1]
             if value[0] == "Idioma":
                  book["language"] = value[1]
-        yield book
-        """
+        print(book["name"])
 
+        yield book
