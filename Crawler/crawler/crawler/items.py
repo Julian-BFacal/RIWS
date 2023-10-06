@@ -18,4 +18,5 @@ class Book(Item):
     language = Field()
     price = Field()
     pages = Field()
+    tags = Field()
     pass
