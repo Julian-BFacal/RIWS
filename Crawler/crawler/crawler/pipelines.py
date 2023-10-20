@@ -25,6 +25,6 @@ class CrawlerPipeline(object):
             }
             for node in self.listItems
         ]
-        print(actions)
+        #print(actions)
 
         helpers.bulk(es, actions)

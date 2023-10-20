@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 
 class ExampleSpider(CrawlSpider):
     name = 'example'
+    count=0;
     allowed_domains = ['casadellibro.com']
     start_urls = ['https://www.casadellibro.com/']
 
@@ -66,6 +67,8 @@ class ExampleSpider(CrawlSpider):
                  book["year"] = value[1]
             if value[0] == "Idioma":
                  book["language"] = value[1]
-        print(book["name"])
+
+        self.count+=1
+        print(str(self.count) + "  -->  Indexado o libro " + book["name"] + " de " + book['author'])
 
         yield book
