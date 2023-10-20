@@ -13,12 +13,11 @@ Instalar dependencias con
 2. Autor
 3. Editorial
 4. Año de edicion
-5. Edición
-6. Idioma
-7. Paginas
-8. Imagen
-9. Sinopsis
-10. Categorias
+5. Idioma
+6. Paginas
+7. Imagen
+8. Sinopsis
+9. Categorias
 11. "Precio"
 
 ## Postman
