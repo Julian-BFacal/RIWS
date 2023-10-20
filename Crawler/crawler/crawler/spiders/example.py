@@ -5,8 +5,6 @@ from crawler.items import Book
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from bs4 import BeautifulSoup
-from scrapy_splash import SplashRequest
-from scrapy.http.response.html import HtmlResponse
 
 class ExampleSpider(CrawlSpider):
     name = 'example'
@@ -32,23 +30,6 @@ class ExampleSpider(CrawlSpider):
                 follow=True
             ),
         )
-
-    def start_requests(self):
-        for url in self.start_urls:
-            yield SplashRequest(url, args={'wait': 0.5})
-
-    """
-    def parse(self,response):
-        ht = HtmlResponse(url=response.url, body=response.body, encoding="utf-8", request=response.request)
-    """
-
-    def _requests_to_follow(self,response):
-        if not isinstance(response, HtmlResponse):
-            response = HtmlResponse(url=response.url, status=response.status, headers = response.headers,
-                body = response.body, flags = response.flags, encoding = "utf-8", request = response.request,
-                certificate = response.certificate, ip_address= response.ip_address)
-        return super()._requests_to_follow(response)
-
 
     def parse_item(self, response):
         book = Book()
