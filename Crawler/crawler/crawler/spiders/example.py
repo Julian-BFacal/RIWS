@@ -60,7 +60,21 @@ class ExampleSpider(CrawlSpider):
         book['tags']=aux
 
         book['name'] = soup.select('h1', class_='text-h4 mb-2')[0].text.strip().replace("\n","").replace("\t","")
-        book["author"] = soup.find('a', attrs={'class': 'text--darken-1 d-flex grey--text'})["data-autor-link"]
+        try:
+            book['sinopsis']=soup.find_all("div",attrs={"class":"formated-text"})[0].get_text()
+        except:
+            none=None
+        aux=soup.find('a', attrs={'class': 'text--darken-1 d-flex grey--text'})
+        if aux is not None:
+            book['author'] = aux["data-autor-link"]
+        else:
+            book['author'] = "Anónimo"
+
+        aux=soup.find('div', attrs={'class': 'swiper-img-container'}).find('img')
+        if aux is not None:
+            book['portada'] =aux['src']
+
+
         for element in soup.find_all('div', attrs={'class': 'row text-body-2 py-1 no-gutters'}):
             value = element.get_text().split(":")
             if value[0] == "Nº de páginas":
