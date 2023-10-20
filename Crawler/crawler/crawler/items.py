@@ -19,4 +19,6 @@ class Book(Item):
     price = Field()
     pages = Field()
     tags = Field()
+    sinopsis = Field()
+    portada = Field()
     pass
