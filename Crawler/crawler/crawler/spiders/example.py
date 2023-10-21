@@ -13,12 +13,12 @@ class ExampleSpider(CrawlSpider):
     start_urls = ['https://www.casadellibro.com/']
 
     custom_settings = {
-                'CLOSESPIDER_ITEMCOUNT' : 100,
-                'CLOSESPIDER_PAGECOUNT' : 1000,
+                'CLOSESPIDER_ITEMCOUNT' : 1,
+                'CLOSESPIDER_PAGECOUNT' : 3,
                 'DOWNLOAD_DELAY' : 0}
 
     rules = (
-    	Rule(
+        Rule(
             LinkExtractor(
                 allow="www.casadellibro.com/libro-"),
                 callback='parse_item',
@@ -37,10 +37,10 @@ class ExampleSpider(CrawlSpider):
         soup = BeautifulSoup(response.body, 'lxml')
 
         aux = []
+
         for element in soup.find_all("span",attrs={"class":"v-chip__content"}):
             aux.append(element.get_text().replace("\n","").replace("\t",""))
         book['tags']=aux
-
         book['name'] = soup.select('h1', class_='text-h4 mb-2')[0].text.strip().replace("\n","").replace("\t","")
         try:
             book['sinopsis']=soup.find_all("div",attrs={"class":"formated-text"})[0].get_text()
@@ -55,7 +55,6 @@ class ExampleSpider(CrawlSpider):
         aux=soup.find('div', attrs={'class': 'swiper-img-container'}).find('img')
         if aux is not None:
             book['portada'] =aux['src']
-
 
         for element in soup.find_all('div', attrs={'class': 'row text-body-2 py-1 no-gutters'}):
             value = element.get_text().split(":")
