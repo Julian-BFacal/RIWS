@@ -26,13 +26,30 @@ class CrawlerPipeline(object):
             "year": {"type": "integer"},
             "pages": {"type": "integer"},
             "language": {"type": "text"},
-            "tags": {"type": "text"},
-            "sinopsis": {"type": "text"},
-            "portada": {"type": "text"},
+            "tags": {"type": "text", "analyzer": "tags_analyzer"},
+            "sinopsis": {"type": "text", "index": False},
+            "portada": {"type": "text", "index": False},
+            }
+        }
+
+        settings = {
+            "analysis": {
+                "analyzer": {
+                    "tags_analyzer": {
+                        "type": "custom",
+                        "tokenizer": "my_tokenizer"
+                    }
+                }, 
+                "tokenizer": {
+                    "my_tokenizer": {
+                        "type": "pattern",
+                        "pattern": ","
+                    }
+                }
             }
         }
         if not es.indices.exists(index="book"):
-            es.indices.create(index="book", mappings=mappings)
+            es.indices.create(index="book", mappings=mappings, settings=settings)
         bulk_data = [
             {
                 "_index": "book",
