@@ -37,7 +37,8 @@ class CrawlerPipeline(object):
                 "analyzer": {
                     "tags_analyzer": {
                         "type": "custom",
-                        "tokenizer": "my_tokenizer"
+                        "tokenizer": "my_tokenizer",
+                        "filter": [ "lowercase" ]
                     }
                 }, 
                 "tokenizer": {
