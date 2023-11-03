@@ -1,12 +1,14 @@
 .darkBG {
   background-color: rgba(0, 0, 0, 0.2);
+
   width: 100vw;
   height: 100vh;
   z-index: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
+  position: fixed;
+  overflow: auto;
 }
 
 .centered {
@@ -35,17 +37,17 @@
 }
 
 .heading {
-  margin: 0;
+  margin: 10;
   padding: 10px;
   color: #2c3e50;
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 1000;
+  font-size: 1vw;
   text-align: center;
 }
 
 .modalContent {
   padding: 10px;
-  font-size: 14px;
+  font-size: 0.5vw;
   color: #2c3e50;
   text-align: center;
 }
@@ -63,6 +65,7 @@
   align-items: center;
 }
 
+
 .closeBtn {
   cursor: pointer;
   font-weight: 500;
@@ -70,8 +73,8 @@
   border-radius: 8px;
   border: none;
   font-size: 18px;
-  color: #2c3e50;
-  background: white;
+  color: white;
+  background: black;
   transition: all 0.25s ease;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
   position: absolute;
@@ -136,6 +139,10 @@
   color: white;
   background: #185adb;
   transition: all 0.25s ease;
+}
+
+.sui-result__image{
+
 }
 
 .primaryBtn:hover {
