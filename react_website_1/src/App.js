@@ -75,6 +75,11 @@ const configurationOptions = {
      author: {}
     },
     // 3. Facet by scores, genre, publisher, and platform, which we'll use to build filters later.
+    disjunctiveFacets: [
+      "pages",
+      "year",
+      "language"
+   ],
     facets: {
       tags: { type: "value", size: 15 },
       language: { type: "value", size: 5 },
