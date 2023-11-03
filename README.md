@@ -5,6 +5,10 @@ Instalar dependencias con
 ```
  pip install -r requirements.txt
 ```
+Instalar dependencias página web react (react_website)
+```
+npm install @elastic/search-ui @elastic/react-search-ui @elastic/react-search-ui-views
+```
 
 # Libros
 
