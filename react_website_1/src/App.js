@@ -141,7 +141,7 @@ export default function App() {
     <SearchProvider config={configurationOptions}>
       <div className="App">
         <Layout
-          header={<SearchBox autocompleteSuggestions={true}  autocompleteMinimumCharacters={3} inputProps={{ placeholder: "Buscar autor o libro" }} />}
+          header={<SearchBox searchAsYouType={true} debounceLength={300} autocompleteSuggestions={true}  autocompleteMinimumCharacters={3} inputProps={{ placeholder: "Buscar autor o libro" }} />}
           bodyContent={
             <Results
               resultView={CustomResultView}
