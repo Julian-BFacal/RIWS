@@ -8,6 +8,7 @@ Instalar dependencias con
 Instalar dependencias página web react (react_website)
 ```
 npm install @elastic/search-ui @elastic/react-search-ui @elastic/react-search-ui-views
+npm install --save moment
 ```
 
 # Libros
