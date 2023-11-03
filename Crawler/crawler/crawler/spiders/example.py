@@ -67,12 +67,10 @@ class ExampleSpider(CrawlSpider):
             value = element.get_text().split(":")
             if value[0] == "Nº de páginas":
                  book["pages"] = value[1]
-                 print(value[1])
             if value[0] == "Editorial":
                  book["editorial"] = value[1]
             if value[0] == "Año de edición":
                  book["year"] = value[1]
-                 print(value[1])
             if value[0] == "Idioma":
                  book["language"] = value[1]
 
