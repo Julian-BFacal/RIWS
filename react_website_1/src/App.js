@@ -15,8 +15,6 @@ import {
 } from "@elastic/react-search-ui";
 import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
-import Slider from '@mui/material/Slider';
-import Typography from '@mui/material/Typography';
 import "./App.css";
 
 
@@ -119,13 +117,15 @@ function MyModal( {result} ) {
 const CustomResultView = ({ result }) =>(
   <li className="sui-result">
     <div className="sui-result__header">
+      <div>
       <h3 className="card-title">{result.name.raw}</h3>
-      <h4 className="card-author">{result.author.raw}</h4>
+      </div>
     </div>
     <div className="sui-result__body">
       {/* use 'raw' values of fields to access values without snippets */}
       <div className="sui-result__image">
         <img src={result.portada.raw} alt={result.portada.raw}/>
+        <h4 className="card-author">{result.author.raw}</h4>
         <MyModal result={result}/>
       </div>
         {/* Use the 'snippet' property of fields with dangerouslySetInnerHtml to render snippets */}
@@ -182,16 +182,6 @@ export default function App() {
               <Facet field="language" label="Idioma" isFilterable={false} />
               <Facet field="year" label="Año" isFilterable={false} />
               <Facet field="pages" label="Páginas" isFilterable={false} />
-              <Typography  gutterBottom style={{color:"grey", opacity: "0.6", }}> PÁGINAS </Typography>
-              <Slider
-              getAriaLabel={() => 'Temperature range'}
-              defaultValue={100}
-              min={50}
-              max={400}
-              step={50}
-              marks
-              valueLabelDisplay="auto"
-              />
             </div>
           }
           bodyHeader={
