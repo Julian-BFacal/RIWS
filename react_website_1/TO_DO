@@ -1,0 +1,10 @@
+Revisar que pasa en casos nos que falten atributos.
+Revisar por que non deixa buscar autor en modo keyword.
+Formatear results para que teñamos varios nunha misma fila e non solo 1
+Formatear ben as cards de results.
+Revisar se o de sort pode funcionar
+Programar sliders 
+  - Mirar como poder mapear valores de result ao resto do contexto para poder acceder a eles.
+  - 
+Revisar que o modal o bg cambie ou que non se poda scrollear para evitar problemas.
+
