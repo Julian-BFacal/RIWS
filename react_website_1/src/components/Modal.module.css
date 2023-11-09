@@ -29,7 +29,7 @@
 }
 
 .modalHeader {
-  height: 50px;
+  height: 100px;
   background: white;
   overflow: hidden;
   border-top-left-radius: 16px;
@@ -41,9 +41,18 @@
   padding: 10px;
   color: #2c3e50;
   font-weight: 1000;
-  font-size: 1vw;
+  font-size: 1.5vw;
   text-align: center;
 }
+.heading2 {
+  margin: 10;
+  padding: 10px;
+  color: black;
+  font-weight: 1000;
+  font-size: 1.5vw;
+  text-align: center;
+}
+
 
 .modalContent {
   padding: 10px;

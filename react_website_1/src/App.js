@@ -16,6 +16,10 @@ import {
 import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "./App.css";
+import moment from "moment";
+
+
+
 
 
 const connector = new ElasticsearchAPIConnector({
@@ -80,12 +84,45 @@ const configurationOptions = {
    ],
     facets: {
       tags: { type: "value", size: 15 },
-      language: { type: "value", size: 5 },
-      year: { type: "value", size: 15 },
+      language: { type: "value", size: 10 },
+      year: {
+        type: "range",
+        ranges: [
+          { from: moment().year(), to:  moment().year(),
+            name: "2023"
+          },
+          { from: moment().subtract(1,"years").year(), to: moment().subtract(1,"years").year(),
+            name: "2022"
+          },
+          { from: moment().subtract(2,"years").year(), to: moment().subtract(2,"years").year(),
+            name: "2021"
+          },
+          { from: moment().subtract(3,"years").year(), to: moment().subtract(3,"years").year(),
+            name: "2020"
+          },
+          { from: moment().subtract(8,"years").year(), to: moment().subtract(4,"years").year(),
+            name: "2015-2019"
+          },
+          { from: moment().subtract(13,"years").year(), to: moment().subtract(9,"years").year(),
+            name: "2010-2014"
+          },
+          { from: moment().subtract(23,"years").year(), to: moment().subtract(14,"years").year(),
+            name: "2000-2009"
+          },
+          { from: moment().subtract(33,"years").year(), to: moment().subtract(24,"years").year(),
+            name: "90"
+          },
+          { from: moment().subtract(43,"years").year(), to: moment().subtract(34,"years").year(),
+            name: "80"
+          },
+        ]
+
+      },
       pages: {
         type: "range",
         ranges: [
-          { from: 0, to: 100, name: "0 - 100" },
+          { from: 0, to: 50, name: "0 - 50" },
+          { from: 50, to: 100, name: "50 - 100" },
           { from: 100, to: 200, name: "100 - 200" },
           { from: 200, to: 300, name: "200 - 300" },
           { from: 300, to: 350, name: "300 - 400" },
@@ -141,7 +178,26 @@ export default function App() {
     <SearchProvider config={configurationOptions}>
       <div className="App">
         <Layout
-          header={<SearchBox searchAsYouType={true} debounceLength={300} autocompleteSuggestions={true}  autocompleteMinimumCharacters={3} inputProps={{ placeholder: "Buscar autor o libro" }} />}
+          header={
+            <div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between"
+                }}
+              >
+                <div
+                style={{
+                  fontSize: "40px"
+                }}>
+                📚 Biblioteca Online
+                </div >
+                <div>
+                <SearchBox searchAsYouType={true} debounceLength={300} autocompleteSuggestions={true}  autocompleteMinimumCharacters={3} inputProps={{ placeholder: "Buscar autor o libro" }}   />
+                </div>
+              </div>
+            </div>
+          }
           bodyContent={
             <Results
               resultView={CustomResultView}

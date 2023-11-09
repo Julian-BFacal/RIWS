@@ -65,7 +65,7 @@
 
 .card-title{
   font-size: 0.7vw;
-  text-align: left;
+  text-align: center;
 }
 .card-author{
   font-size: 1vw;
@@ -76,6 +76,7 @@
   margin: 5px;
   height: 30vw;
   align-items: baseline;
+  max-width: 25%;
 }
 .customization-example .sui-search-box__submit {
   color:black;

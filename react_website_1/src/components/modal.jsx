@@ -16,7 +16,7 @@ const Modal = ({ result, setIsOpen }) => {
       <div className={styles.centered}>
         <div className={styles.modal}>
           <div className={styles.modalHeader}>
-            <h1 className={styles.heading}>{result.name.raw}</h1>
+            <h1 className={styles.heading}>{result.name.raw}<br/>{result.author.raw}</h1>
           </div>
           <div className="sui-result_body" style={{width: '100%' ,display:'table'}}>
             <button className={styles.closeBtn} onClick={() => {setIsOpen(false); enable()}}>
