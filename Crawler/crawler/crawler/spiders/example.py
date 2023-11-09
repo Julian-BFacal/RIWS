@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import json
+import re
 from crawler.items import Book
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
@@ -13,7 +14,7 @@ class ExampleSpider(CrawlSpider):
     start_urls = ['https://www.casadellibro.com/']
 
     custom_settings = {
-                'CLOSESPIDER_ITEMCOUNT' : 10,
+                'CLOSESPIDER_ITEMCOUNT' : 20,
                 'CLOSESPIDER_PAGECOUNT' : 300000,
                 'DOWNLOAD_DELAY' : 0.5}
 
@@ -50,7 +51,7 @@ class ExampleSpider(CrawlSpider):
         if aux is not None:
             book['author'] = aux["data-autor-link"]
         else:
-            book['author'] = "Anónimo"
+            book['author'] = "ANÓNIMO"
 
         aux=soup.find('div', attrs={'class': 'swiper-img-container'}).find('img')
         if aux is not None:
@@ -63,16 +64,23 @@ class ExampleSpider(CrawlSpider):
         book["year"]=None
         book["language"]=None
 
-        for element in soup.find_all('div', attrs={'class': 'row text-body-2 py-1 no-gutters'}):
-            value = element.get_text().split(":")
-            if value[0] == "Nº de páginas":
-                 book["pages"] = value[1]
-            if value[0] == "Editorial":
-                 book["editorial"] = value[1]
-            if value[0] == "Año de edición":
-                 book["year"] = value[1]
-            if value[0] == "Idioma":
-                 book["language"] = value[1]
+        for element in soup.find_all('div', attrs={'class': 'caracteristicas mt-4 pt-4'}):
+            value = element.get_text().split("\n")
+            for tab in value:
+                value = tab.split(":")
+                if len(value) > 1:
+                    value[0] = value[0].replace("\t", "")
+                    value[1] = value[1].strip()
+                    print(value)
+
+                    if value[0] == "Nº de páginas":
+                         book["pages"] = value[1]
+                    if value[0] == "Editorial":
+                         book["editorial"] = value[1]
+                    if value[0] == "Año de edición":
+                         book["year"] = value[1]
+                    if value[0] == "Idioma":
+                         book["language"] = value[1]
 
         self.count+=1
         print(str(self.count) + "  -->  Indexado o libro " + book["name"] + " de " + book['author'])
