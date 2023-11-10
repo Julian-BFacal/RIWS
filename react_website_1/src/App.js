@@ -110,10 +110,10 @@ const configurationOptions = {
             name: "2000-2009"
           },
           { from: moment().subtract(33,"years").year(), to: moment().subtract(24,"years").year(),
-            name: "90"
+            name: "1990"
           },
           { from: moment().subtract(43,"years").year(), to: moment().subtract(34,"years").year(),
-            name: "80"
+            name: "1980-"
           },
         ]
 
