@@ -52,13 +52,12 @@ Abrirase a páxina directamente e xa se poderá usar e buscar nela.
 1. Título
 2. Autor
 3. Editorial
-4. Año de edicion
+4. Ano de edicion
 5. Idioma
-6. Paginas
-7. Imagen
-8. Sinopsis
+6. Páxinas
+7. Imaxe
+8. Sinopse
 9. Categorias
-11. "Precio"
 
 ## Postman
 https://earlyrisk.postman.co/workspace/New-Team-Workspace~899a528d-733b-406e-a679-577f7f9cabc3/collection/1262116-52dcf7a2-4f26-43ea-b4ea-a11cce96ca60?action=share&creator=29656879
