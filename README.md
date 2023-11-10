@@ -12,6 +12,25 @@ npm install --save moment
 npm install --save @elastic/search-ui-elasticsearch-connector
 npm install react-icons --save
 ```
+Antes de poder executar elasticsearch é importante configurar este para o seu correcto funcionamento esto farase no archivo *elasticsearch.yml*. 
+Engadir as liñas, para activar Cors:
+```
+http.cors.enabled: true
+http.cors.allow-credentials: true
+http.cors.allow-origin: "*"
+http.cors.allow-methods: OPTIONS, HEAD, GET, POST, PUT, DELETE
+http.cors.allow-headers: "*"
+```
+Desabilitar autenticación:
+```
+xpack.security.enabled: false
+xpack.security.enrollment.enabled: false
+```
+Unha vez modificado este archivo, pódese executar elastisearch e crear o índice con datos. Esto farase accedendo ao archivo *example.py*:
+```
+cd Crawler/crawler/crawler/spiders
+scrapy runspider example.py
+```
 
 # Libros
 
