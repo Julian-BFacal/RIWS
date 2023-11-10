@@ -31,7 +31,21 @@ Unha vez modificado este archivo, pódese executar elastisearch e crear o índic
 cd Crawler/crawler/crawler/spiders
 scrapy runspider example.py
 ```
+Se se quere modificar o número de items a engadir no índice débese modificar o _CLOSESPIDER_ITEMCOUNT_ dentro de *example.py* ou _CLOSESPIDER_PAGECOUNT_ se se quere filtrar por número de páxinas.
+A opción de _DOWNLOAD_DELAY_ non debería reducirse a menos de 0.4 para evitar posibles baneos.
+```
+custom_settings = {
+                'CLOSESPIDER_ITEMCOUNT' : 1500,
+                'CLOSESPIDER_PAGECOUNT' : 10000,
+                'DOWNLOAD_DELAY' : 0.5}
+```
 
+Unha vez se indexaron correctamente os libros, (comprobable mediante a extensión de buscador e conexión a localhost:9200) pódese iniciar a páxina web.
+```
+cd react_website1
+npm start
+```
+Abrirase a páxina directamente e xa se poderá usar e buscar nela.
 # Libros
 
 
