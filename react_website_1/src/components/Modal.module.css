@@ -1,5 +1,5 @@
 .darkBG {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
 
   width: 100vw;
   height: 100vh;
@@ -16,30 +16,33 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: var(--color4);
+
 }
 
 .modal {
-  width: 1000px;
-  height: 700px;
-  background: white;
-  color: white;
+  max-height: 100vh;
+  min-width: 50vw;
+  width: auto;
+  background: var(--color2);
   z-index: 10;
   border-radius: 16px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
 }
 
 .modalHeader {
-  height: 100px;
-  background: white;
+  height: auto;
+  background: var(--color2);
   overflow: hidden;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
 }
 
+
+
 .heading {
   margin: 10;
   padding: 10px;
-  color: #2c3e50;
   font-weight: 1000;
   font-size: 1.5vw;
   text-align: center;
@@ -47,7 +50,6 @@
 .heading2 {
   margin: 10;
   padding: 10px;
-  color: black;
   font-weight: 1000;
   font-size: 1.5vw;
   text-align: center;
@@ -57,7 +59,6 @@
 .modalContent {
   padding: 10px;
   font-size: 0.5vw;
-  color: #2c3e50;
   text-align: center;
 }
 
@@ -82,8 +83,8 @@
   border-radius: 8px;
   border: none;
   font-size: 18px;
-  color: white;
-  background: black;
+  color: var(--color1);
+  background: var(--color3);
   transition: all 0.25s ease;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
   position: absolute;
@@ -148,10 +149,6 @@
   color: white;
   background: #185adb;
   transition: all 0.25s ease;
-}
-
-.sui-result__image{
-
 }
 
 .primaryBtn:hover {

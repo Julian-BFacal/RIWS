@@ -71,7 +71,6 @@ class ExampleSpider(CrawlSpider):
                 if len(value) > 1:
                     value[0] = value[0].replace("\t", "")
                     value[1] = value[1].strip()
-                    print(value)
 
                     if value[0] == "Nº de páginas":
                          book["pages"] = value[1]

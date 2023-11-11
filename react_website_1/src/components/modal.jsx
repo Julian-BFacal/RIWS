@@ -22,8 +22,8 @@ const Modal = ({ result, setIsOpen }) => {
             <button className={styles.closeBtn} onClick={() => {setIsOpen(false); enable()}}>
               <RiCloseLine style={{ marginBottom: "-3px" }} />
             </button>
-            <div style={{display:'table-row'}}>
-              <div className="data" style={{width: '25%', display:'table-cell', padding: '50px'}}>
+            <div className="modal-body" style={{display:'table-row'}}>
+              <div className="data" >
                 <img src={result.portada.raw} alt={result.portada.raw} />
                 <h5 className="modal-list">Editorial: {result.editorial.raw}</h5>
                 <h5 className="modal-list">Idioma: {result.language.raw}</h5>

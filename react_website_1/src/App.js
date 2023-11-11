@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import styles from "./App.css";
-import Modal from "./components/modal.jsx";
 import ElasticsearchAPIConnector from "@elastic/search-ui-elasticsearch-connector";
 import {
   PagingInfo,
@@ -17,14 +15,15 @@ import { Layout } from "@elastic/react-search-ui-views";
 import "@elastic/react-search-ui-views/lib/styles/styles.css";
 import "./App.css";
 import moment from "moment";
-
+import styles from "./App.css";
+import Modal from "./components/modal.jsx";
 
 
 
 
 const connector = new ElasticsearchAPIConnector({
   host: "http://localhost:9200",
-  index: "book"
+  index: "book",
 });
 
 const configurationOptions = {
@@ -55,7 +54,7 @@ const configurationOptions = {
     }
   },
   searchQuery: {
-    // 2. Results: name of the video game, its genre, publisher, scores, and platform.
+
     result_fields: {
       name: { raw: {} },
       author: { raw: {}},
@@ -72,11 +71,10 @@ const configurationOptions = {
       portada: {raw: {}},
     },
     search_fields: {
-     // 1. Search by name of video game.
      name: {},
      author: {}
     },
-    // 3. Facet by scores, genre, publisher, and platform, which we'll use to build filters later.
+
     disjunctiveFacets: [
       "pages",
       "year",
@@ -142,12 +140,12 @@ document.body.style.overflow = 'scroll';}
 function MyModal( {result} ) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <main>
+    <main><div class="button_container">
       <button className="primaryBtn" onClick={() => {setIsOpen(true); disable()}}>
        Ver Mas
       </button>
       {isOpen && <Modal result={result} setIsOpen={setIsOpen}  />}
-    </main>
+    </div></main>
   )
 }
 
