@@ -182,6 +182,15 @@ img {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   color:var(--color4);
+  background-image: url("patron.png");
+  background-size: 20vh;
+}
+
+.title{
+  padding: 1.5vw;
+  color: var(--color1);
+  background: linear-gradient(var(--color3), var(--color4));
+  border-radius: 5vw;
 }
 
 .sui-layout-body__inner{

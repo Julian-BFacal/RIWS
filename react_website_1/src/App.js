@@ -184,7 +184,7 @@ export default function App() {
                   justifyContent: "space-between"
                 }}
               >
-                <div
+                <div class="title"
                 style={{
                   fontSize: "40px"
                 }}>
