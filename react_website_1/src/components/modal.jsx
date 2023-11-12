@@ -4,7 +4,6 @@ import React from "react";
 import styles from "./Modal.module.css";
 import { RiCloseLine } from "react-icons/ri";
 
-
 function enable(){
 document.body.style.overflow = 'scroll';}
 
@@ -29,7 +28,7 @@ const Modal = ({ result, setIsOpen }) => {
                 <h5 className="modal-list">Idioma: {result.language.raw}</h5>
                 <h5 className="modal-list">Páginas: {result.pages.raw}</h5>
                 <h5 className="modal-list">Año: {result.year.raw}</h5>
-                <h5 className="modal-list">Tags: {result.tags.raw}</h5>
+                <h5 className="modal-list">Tags: {result.tags.raw.toString()}</h5>
               </div>
               <div style={{display:'table-cell'}} className="modal-result__details"
               dangerouslySetInnerHTML={{ __html:result.sinopsis.raw, color:'black' }}>
