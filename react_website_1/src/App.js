@@ -81,7 +81,7 @@ const configurationOptions = {
       "language"
    ],
     facets: {
-      tags: { type: "value", size: 15 },
+      tags: { type: "value" },
       language: { type: "value", size: 10 },
       year: {
         type: "range",
@@ -232,7 +232,7 @@ export default function App() {
                   }
                 ]}
               />
-              <Facet field="tags" label="Tags" isFilterable={true} />
+              <Facet field="tags" label="Tags" isFilterable={true} show="5" />
               <Facet field="language" label="Idioma" isFilterable={false} />
               <Facet field="year" label="Año" isFilterable={false} />
               <Facet field="pages" label="Páginas" isFilterable={false} />
