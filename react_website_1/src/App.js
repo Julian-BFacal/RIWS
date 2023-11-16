@@ -235,7 +235,7 @@ export default function App() {
               <Facet field="tags" label="Tags" isFilterable={true} show="5" />
               <Facet field="language" label="Idioma" isFilterable={false} />
               <Facet field="year" label="Año" isFilterable={false} />
-              <Facet field="pages" label="Páginas" isFilterable={false} />
+              <Facet field="pages" label="Páginas" isFilterable={false} show="6" />
             </div>
           }
           bodyHeader={
